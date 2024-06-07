@@ -1,0 +1,21 @@
+
+version: 2
+
+models:
+  - name: customers
+    description: "A table about our customers"
+    columns:
+      - name: customer_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: monthly_customers
+    description: "A roll-up table of customers signups per month"
+    columns:
+      - name: signup_month
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
