@@ -2,19 +2,19 @@
 version: 2
 
 models:
-  - name: my_first_dbt_model
-    description: "A starter dbt model"
+  - name: customers
+    description: "A table about our customers"
     columns:
-      - name: id
+      - name: customer_id
         description: "The primary key for this table"
         tests:
           - unique
           - not_null
 
-  - name: my_second_dbt_model
-    description: "A starter dbt model"
+  - name: monthly_customers
+    description: "A roll-up table of customers signups per month"
     columns:
-      - name: id
+      - name: signup_month
         description: "The primary key for this table"
         tests:
           - unique

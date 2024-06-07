@@ -3,7 +3,7 @@ WITH customers AS (
     id AS customer_id
     , name
     , email
-  FROM `analytics-engineers-club.coffee_shop.customers`
+  FROM {{ source('coffee_shop', 'customers') }} 
 )
 
 , orders AS (
@@ -11,7 +11,7 @@ WITH customers AS (
     customer_id
     , MIN(created_at) AS first_order_at
     , COUNT(id) AS number_of_orders
-  from `analytics-engineers-club.coffee_shop.orders`
+  FROM {{ source('coffee_shop', 'orders') }}
   GROUP BY 1
 )
 
@@ -24,5 +24,3 @@ SELECT
 FROM customers c 
 LEFT JOIN orders o 
   ON c.customer_id = o.customer_id
-ORDER BY o.first_order_at
-LIMIT 5
